@@ -47,10 +47,10 @@ def getData(url):
         data = responce.json()
         saveFallbackDataAsync(data)
         return structuredData(data)
-    else:
-        print(f"The request failed satus: {responce.status_code}")
-        fallback = loadFallbackData()
-        return structuredData(fallback)
+    
+    print(f"The request failed satus: {responce.status_code}")
+    fallback = loadFallbackData()
+    return structuredData(fallback if fallback is not None else [])
 
 
 def structuredData(countries):
